@@ -14,6 +14,7 @@ public enum API {
 public enum Tittle {
     static let hotel = "Отель"
     static let titleButtonHotel = "К выбору номера"
+    static let aboutHotel = "Об отеле"
 }
 
 public enum Colors {
@@ -29,4 +30,6 @@ public enum Icons {
     static let happy = "IconHappy"
     static let tick = "IconTickSquare"
     static let chevron = "IconChevron"
+    static let failureLoadImage = "xmark.circle.fill"
+    static let star = "star.fill"
 }

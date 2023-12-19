@@ -27,6 +27,6 @@ struct DetailsSectionView: View {
     }
 }
 
-#Preview {
-    DetailsSectionView(detailsModel: DetailsSectionModel(icon: Icons.happy, title: "Удобства", subtitle: "Самое необходимое"))
-}
+//#Preview {
+//    DetailsSectionView(detailsModel: DetailsSectionModel(icon: Icons.happy, title: "Удобства", subtitle: "Самое необходимое"))
+//}

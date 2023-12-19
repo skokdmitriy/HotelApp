@@ -10,7 +10,7 @@ import Foundation
 struct HotelModel: Decodable {
     let id: Int
     let name: String
-    let address: String
+    let adress: String
     let minimalPrice: Int
     let priceForIt: String
     let rating: Int
@@ -19,7 +19,6 @@ struct HotelModel: Decodable {
     let aboutTheHotel: AboutTheHotel
 }
 
-// MARK: - AboutTheHotel
 struct AboutTheHotel: Decodable {
     let description: String
     let peculiarities: [String]
@@ -29,11 +28,4 @@ struct DetailsSectionModel: Hashable {
     let icon: String
     let title: String
     let subtitle: String
-}
-
-struct User {
-    var id: UUID
-    var name: String
-
-    static let def = User(id: UUID(), name: "anonumus")
 }

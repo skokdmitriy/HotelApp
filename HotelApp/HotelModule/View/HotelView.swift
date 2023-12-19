@@ -14,11 +14,14 @@ struct HotelView: View {
         NavigationView {
             ScrollView {
                 VStack(alignment: .leading, spacing: 8) {
-                    makeDescriptionHotelSection()
-                    makeAboutHotelSection()
-                    makeDetailsSection()
+                    if let hotel = viewModel.hotel {
+                        DescriptionHotelView(hotel: hotel)
+                        AboutHotelView(hotel: hotel)
+                        makeDetailsSection()
+                    }
                 }
                 .padding(.horizontal)
+                .background(Color.gray)
             }
             .navigationBarTitle(Tittle.hotel, displayMode: .inline)
         }
@@ -30,15 +33,6 @@ struct HotelView: View {
         }
         .buttonStyle(.borderedProminent)
         .padding(.horizontal)
-
-    }
-
-    private func makeDescriptionHotelSection() -> some View {
-        DescriptionHotelView()
-    }
-
-    private func makeAboutHotelSection() -> some View {
-        AboutHotelView()
     }
 
     private func makeDetailsSection() -> some View {
