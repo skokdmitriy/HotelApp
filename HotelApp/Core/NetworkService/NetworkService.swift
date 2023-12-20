@@ -35,6 +35,7 @@ final class NetworkService {
                 }
                 return .invalidFormatError
             }
+            .receive(on: DispatchQueue.main)
             .eraseToAnyPublisher()
     }
 }

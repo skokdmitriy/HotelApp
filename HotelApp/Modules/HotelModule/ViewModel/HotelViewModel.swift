@@ -21,10 +21,9 @@ final class HotelViewModel: ObservableObject {
         loadHotel()
     }
 
-    func loadHotel() {
+    private func loadHotel() {
         networkService.fetchHotel()
-            .subscribe(on: DispatchQueue.global(qos: .userInitiated))
-            .receive(on: DispatchQueue.main)
+            .subscribe(on: DispatchQueue.main)
             .sink { completion in
                 switch completion {
                 case .finished:
@@ -37,7 +36,6 @@ final class HotelViewModel: ObservableObject {
             }
             .store(in: &cancellables)
     }
-
 
     private func makeDetails() {
         details.append(DetailsSectionModel(icon: Icons.happy,
@@ -53,4 +51,3 @@ final class HotelViewModel: ObservableObject {
                                            subtitle: "Самое необходимое"))
     }
 }
-

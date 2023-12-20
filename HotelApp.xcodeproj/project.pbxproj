@@ -73,10 +73,10 @@
 		2C06ED6F2B2CC1D500C44223 /* HotelApp */ = {
 			isa = PBXGroup;
 			children = (
+				2C94F9282B33359C006C43CF /* Modules */,
 				2C9634682B2CD4840054A216 /* App */,
 				2C9634722B2D79260054A216 /* Core */,
 				2C9634692B2CD4E40054A216 /* SupportingFiles */,
-				2C9634642B2CC9F80054A216 /* HotelModule */,
 				2C9634632B2CC97C0054A216 /* Resources */,
 				2C06ED762B2CC1D600C44223 /* Preview Content */,
 			);
@@ -122,6 +122,22 @@
 				2C94F9192B2E0D88006C43CF /* HotelViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		2C94F9272B333576006C43CF /* RoomModule */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = RoomModule;
+			sourceTree = "<group>";
+		};
+		2C94F9282B33359C006C43CF /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				2C9634642B2CC9F80054A216 /* HotelModule */,
+				2C94F9272B333576006C43CF /* RoomModule */,
+			);
+			path = Modules;
 			sourceTree = "<group>";
 		};
 		2C9634632B2CC97C0054A216 /* Resources */ = {

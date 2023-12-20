@@ -11,11 +11,12 @@ struct AboutHotelView: View {
     let hotel: HotelModel
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 8) {
+        VStack(alignment: .leading) {
             Text(Tittle.aboutHotel)
                 .font(.system(size: 22))
+                .padding(.top, 8)
 
-            TagsView(availableWidth: 375,
+            TagsView(availableWidth: UIScreen.main.bounds.width,
                      data: hotel.aboutTheHotel.peculiarities, spacing: 5,
                      alignment: .leading
             ) { item in
@@ -26,12 +27,12 @@ struct AboutHotelView: View {
                     .background(Color(hex: Colors.backgroundTag))
                     .cornerRadius(5)
             }
-
             Text(hotel.aboutTheHotel.description)
                 .font(.system(size: 16))
+
+            
         }
-        .background(Color.white)
-        .cornerRadius(5)
+        .padding(.horizontal)
     }
 }
 

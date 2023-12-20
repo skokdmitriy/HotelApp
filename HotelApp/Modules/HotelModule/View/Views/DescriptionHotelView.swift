@@ -16,7 +16,7 @@ struct DescriptionHotelView: View {
             makeNameHotelView()
             makePriceSection()
         }
-        .background(Color.white)
+        .padding(.horizontal)
     }
 
     private func makeImageSliderSection() -> some View {
@@ -30,7 +30,7 @@ struct DescriptionHotelView: View {
                 Color(hex: Colors.backgroundRating)
                     .frame(width: 149, height: 29, alignment: .center)
                     .opacity(0.2)
-                HStack(alignment: .center, spacing: 2) {
+                HStack(alignment: .center, spacing: 5) {
                     Image(systemName: Icons.star)
                         .frame(width: 15, height: 15)
                     Text(String(hotel.rating))
@@ -40,7 +40,7 @@ struct DescriptionHotelView: View {
                 .foregroundColor(Color(hex: Colors.textColorRating))
             }
             .cornerRadius(5)
-
+            
             Text(hotel.name)
                 .font(.system(size: 22))
             Text(hotel.adress)
@@ -52,7 +52,7 @@ struct DescriptionHotelView: View {
     private func makePriceSection() -> some View {
         HStack(alignment: .bottom) {
             Text("от \(hotel.minimalPrice.formatted(.number.locale(.init(identifier: "fr_FR")))) ₽")
-                .font(.system(size: 30))
+                .font(.system(size: 30, weight: .semibold))
             Text(hotel.priceForIt)
                 .font(.system(size: 16))
                 .foregroundColor(Color(hex: Colors.gray))

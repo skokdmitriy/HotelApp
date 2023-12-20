@@ -13,15 +13,12 @@ struct HotelView: View {
     var body: some View {
         NavigationView {
             ScrollView {
-                VStack(alignment: .leading, spacing: 8) {
-                    if let hotel = viewModel.hotel {
-                        DescriptionHotelView(hotel: hotel)
-                        AboutHotelView(hotel: hotel)
-                        makeDetailsSection()
-                    }
+                if let hotel = viewModel.hotel {
+                    DescriptionHotelView(hotel: hotel)
+                    AboutHotelView(hotel: hotel)
+                    makeDetailsSection()
+                        .padding(.horizontal)
                 }
-                .padding(.horizontal)
-                .background(Color.gray)
             }
             .navigationBarTitle(Tittle.hotel, displayMode: .inline)
         }
