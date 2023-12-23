@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HotelView: View {
     @EnvironmentObject private var viewModel: HotelViewModel
+    @State private var isShowingRoomView = false
 
     var body: some View {
         NavigationView {
@@ -19,23 +20,34 @@ struct HotelView: View {
                     makeDetailsSection()
                         .padding(.horizontal)
                 }
-            }
-            .navigationBarTitle(Tittle.hotel, displayMode: .inline)
-        }
 
-        Button {
-        } label: {
-            Text(Tittle.titleButtonHotel)
-                .frame(maxWidth: .infinity)
+                NavigationLink(
+                    destination: destinationRoomView(),
+                    isActive: $isShowingRoomView) {
+                        EmptyView()
+                    }
+
+                Button {
+                    self.isShowingRoomView = true
+                } label: {
+                    Text(Title.titleButtonHotel)
+                        .frame(maxWidth: .infinity)
+                }
+                .buttonStyle(.borderedProminent)
+                .padding(.horizontal)
+            }
+            .navigationBarTitle(Title.hotel, displayMode: .inline)
         }
-        .buttonStyle(.borderedProminent)
-        .padding(.horizontal)
     }
 
     private func makeDetailsSection() -> some View {
         ForEach(viewModel.details, id: \.self) { detailsModel in
             DetailsSectionView(detailsModel: detailsModel)
         }
+    }
+
+    private func destinationRoomView() -> some View {
+        return RoomsView(title: viewModel.hotel?.name ?? "room").environmentObject(RoomsViewModel())
     }
 }
 

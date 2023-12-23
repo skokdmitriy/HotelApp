@@ -13,7 +13,7 @@ final class HotelViewModel: ObservableObject {
     private let networkService = NetworkService()
     @Published var details: [DetailsSectionModel] = []
     @Published var hotel: HotelModel?
-    @Published var images: [UIImage] = []
+    @Published var imagesHotel: [UIImage] = []
     @State private var cancellables = Set<AnyCancellable>()
 
     init() {

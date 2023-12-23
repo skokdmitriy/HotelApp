@@ -21,12 +21,12 @@ struct DetailsSectionView: View {
                     .foregroundColor(Color(hex: Colors.gray))
             }
             Spacer()
-            Image(Icons.chevron)
+            Image(systemName: Icons.chevronRight)
         }
         Divider()
     }
 }
 
-//#Preview {
-//    DetailsSectionView(detailsModel: DetailsSectionModel(icon: Icons.happy, title: "Удобства", subtitle: "Самое необходимое"))
-//}
+#Preview {
+    DetailsSectionView(detailsModel: DetailsSectionModel(icon: Icons.happy, title: "Удобства", subtitle: "Самое необходимое"))
+}

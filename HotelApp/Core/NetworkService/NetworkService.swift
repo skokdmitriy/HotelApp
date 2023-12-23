@@ -20,6 +20,10 @@ final class NetworkService {
         request(API.urlHotel)
     }
 
+    public func fetchRooms() -> AnyPublisher<RoomsModel, ApiError> {
+        request(API.urlRoom)
+    }
+
    private func request<T:Decodable>(_ url: String) -> AnyPublisher<T, ApiError> {
         guard let url = URL(string: url) else {
             return Fail(error: ApiError.badUrl).eraseToAnyPublisher()

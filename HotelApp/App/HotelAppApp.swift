@@ -12,6 +12,7 @@ struct HotelAppApp: App {
     var body: some Scene {
         WindowGroup {
             HotelView().environmentObject(HotelViewModel())
+//            RoomsView().environmentObject(RoomsViewModel())
         }
     }
 }

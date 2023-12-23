@@ -12,7 +12,7 @@ struct AboutHotelView: View {
 
     var body: some View {
         VStack(alignment: .leading) {
-            Text(Tittle.aboutHotel)
+            Text(Title.aboutHotel)
                 .font(.system(size: 22))
                 .padding(.top, 8)
 
