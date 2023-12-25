@@ -33,4 +33,22 @@ final class BookingViewModel: ObservableObject  {
             .store(in: &cancellables)
     }
 
+    func getNumberTourist(_ numberTourist: Int) -> String {
+        switch numberTourist {
+        case 0:
+            Title.secondTourist
+        case 1:
+            Title.thirdTourist
+        default:
+            "default"
+        }
+    }
+
+    func getFinalPrice() -> Int {
+        guard let booking else {
+            return 0
+        }
+        let finalPrice = booking.tourPrice + booking.fuelCharge + booking.serviceCharge
+        return finalPrice
+    }
 }
