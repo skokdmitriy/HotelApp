@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HotelView: View {
     @EnvironmentObject private var viewModel: HotelViewModel
-    @State private var isShowingRoomView = false
+    @State private var isActivateRootLink = false
 
     var body: some View {
         NavigationView {
@@ -21,18 +21,12 @@ struct HotelView: View {
                         .padding(.horizontal)
                 }
 
-                NavigationLink(
-                    destination: destinationRoomView(),
-                    isActive: $isShowingRoomView) {
-                        EmptyView()
-                    }
-
-                Button {
-                    self.isShowingRoomView = true
-                } label: {
-                    Text(Title.titleButtonHotel)
+                NavigationLink(destination: destinationRoomView(),
+                               isActive: $isActivateRootLink,
+                               label: {
+                    Text(Title.buttonHotel)
                         .frame(maxWidth: .infinity)
-                }
+                })
                 .buttonStyle(.borderedProminent)
                 .padding(.horizontal)
             }
@@ -47,7 +41,7 @@ struct HotelView: View {
     }
 
     private func destinationRoomView() -> some View {
-        return RoomsView(title: viewModel.hotel?.name ?? "room").environmentObject(RoomsViewModel())
+        return RoomsView(isActivateRootLink: $isActivateRootLink, title: viewModel.hotel?.name ?? "room").environmentObject(RoomsViewModel())
     }
 }
 
