@@ -20,7 +20,7 @@ struct RoomView: View {
             Button {
             } label: {
                 HStack {
-                    Text(Title.titleButtonAboutRoom)
+                    Text(Title.buttonAboutRoom)
                     Text(Image(systemName: Icons.chevronRight))
                 }
                 .font(.system(size: 16, weight: .medium))
@@ -31,15 +31,9 @@ struct RoomView: View {
             .cornerRadius(5)
 
             makePriceSection()
-
-            Button {
-            } label: {
-                Text(Title.titleButtonRoom)
-                    .frame(maxWidth: .infinity)
-            }
-            .buttonStyle(.borderedProminent)
         }
     }
+
 
     private func makeImageSliderSection() -> some View {
         ImageSlider(imageUrls: room.imageUrls)

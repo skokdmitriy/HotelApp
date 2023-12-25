@@ -39,13 +39,6 @@ struct DescriptionHotelView: View {
                 .font(.system(size: 16))
                 .foregroundColor(Color(hex: Colors.textColorRating))
             }
-            .cornerRadius(5)
-            
-            Text(hotel.name)
-                .font(.system(size: 22))
-            Text(hotel.adress)
-                .font(.system(size: 14))
-                .foregroundColor(Color(hex: Colors.blue))
         }
     }
 
