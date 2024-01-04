@@ -62,6 +62,7 @@ public enum Colors {
     static let backgroundTag = "#FBFBFC"
     static let background = "#F6F6F9"
     static let textFieldPlaceholder = "#A9ABB7"
+    static let backgroundScreen = "#F1F1F1"
 }
 
 public enum Icons {

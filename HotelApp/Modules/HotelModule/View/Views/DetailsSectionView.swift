@@ -11,19 +11,22 @@ struct DetailsSectionView: View {
     let detailsModel: DetailsSectionModel
 
     var body: some View {
-        HStack(alignment: .center){
+        HStack(alignment: .center) {
             Image(detailsModel.icon)
             VStack(alignment: .leading) {
                 Text(detailsModel.title)
-                    .font(.system(size: 16))
+                    .font(.system(size: 16, weight: .medium))
                 Text(detailsModel.subtitle)
-                    .font(.system(size: 14))
+                    .font(.system(size: 14, weight: .medium))
                     .foregroundColor(Color(hex: Colors.gray))
+                Divider()
             }
+
             Spacer()
             Image(systemName: Icons.chevronRight)
         }
-        Divider()
+        .cornerRadius(15)
+        .padding(.horizontal)
     }
 }
 
