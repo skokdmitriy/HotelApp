@@ -14,13 +14,13 @@ struct HotelView: View {
     var body: some View {
         NavigationView {
             ScrollView(showsIndicators: false) {
-                VStack {
+                VStack(spacing: 12) {
                     if let hotel = viewModel.hotel {
                         makeDescriptionHotelSection(hotel: hotel)
                         makeAboutHotelSection(hotel: hotel)
                     }
 
-                    VStack(spacing: 0) {
+                    VStack(spacing: .zero) {
                         Divider()
                         NavigationLink(destination: destinationRoomView(),
                                        isActive: $isActivateRootLink,
@@ -107,15 +107,31 @@ struct HotelView: View {
         .cornerRadius(12)
     }
 
-
     private func makeDetailsSection() -> some View {
-        ForEach(viewModel.details, id: \.self) { detailsModel in
-            DetailsSectionView(detailsModel: detailsModel)
+        VStack {
+            DetailsSectionView(icon: Icons.happy,
+                               title: "Удобства",
+                               subtitle: "Самое необходимое",
+                               isShowDivider: true
+            )
+            DetailsSectionView(icon: Icons.tick,
+                               title: "Что включено",
+                               subtitle: "Самое необходимое",
+                               isShowDivider: true
+            )
+            DetailsSectionView(icon: Icons.close,
+                               title: "Что не включено",
+                               subtitle: "Самое необходимое",
+                               isShowDivider: false
+            )
         }
+        .padding(.vertical, 15)
+        .background(Color(hex: Colors.backgroundTag))
+        .cornerRadius(15)
+        .padding(.horizontal)
     }
 
     private func destinationRoomView() -> some View {
         return RoomsView(isActivateRootLink: $isActivateRootLink, title: viewModel.hotel?.name ?? "room").environmentObject(RoomsViewModel())
     }
-
 }
