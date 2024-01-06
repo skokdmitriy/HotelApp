@@ -23,9 +23,3 @@ struct AboutTheHotel: Decodable {
     let description: String
     let peculiarities: [String]
 }
-
-struct DetailsSectionModel: Hashable {
-    let icon: String
-    let title: String
-    let subtitle: String
-}
