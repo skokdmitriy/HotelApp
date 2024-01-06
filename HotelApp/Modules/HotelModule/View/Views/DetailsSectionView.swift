@@ -7,6 +7,14 @@
 
 import SwiftUI
 
+private enum Constants {
+    static let titleFountSize: CGFloat = 16
+    static let subTitleFontSize: CGFloat = 14
+    static let imageChevronOffset: CGFloat = -25
+    static let cornerRadius: CGFloat = 15
+    static let paddingLeading: CGFloat = 15
+}
+
 struct DetailsSectionView: View {
     let icon: String
     let title: String
@@ -16,11 +24,13 @@ struct DetailsSectionView: View {
     var body: some View {
         HStack(alignment: .center) {
             Image(icon)
+
             VStack(alignment: .leading) {
                 Text(title)
-                    .font(.system(size: 16, weight: .medium))
+                    .font(.system(size: Constants.titleFountSize, weight: .medium))
+
                 Text(subtitle)
-                    .font(.system(size: 14, weight: .medium))
+                    .font(.system(size: Constants.subTitleFontSize, weight: .medium))
                     .foregroundColor(Color(hex: Colors.gray))
 
                 if isShowDivider {
@@ -32,9 +42,9 @@ struct DetailsSectionView: View {
                 Spacer()
             }
             Image(systemName: Icons.chevronRight)
-                .offset(x: -25)
+                .offset(x: Constants.imageChevronOffset)
         }
-        .cornerRadius(15)
-        .padding(.leading, 15)
+        .cornerRadius(Constants.cornerRadius)
+        .padding(.leading, Constants.paddingLeading)
     }
 }

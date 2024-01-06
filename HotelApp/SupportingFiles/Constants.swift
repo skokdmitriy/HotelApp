@@ -52,6 +52,14 @@ public enum Title {
     static let decriptionOrder = "Подтверждение заказа №104893 может занять некоторое время (от 1 часа до суток). Как только мы получим ответ от туроператора, вам на почту придет уведомление."
     static let payment = "Заказ оплачен"
     static let paymentButton = "Супер!"
+    static let from = "от"
+    static let rub = "₽"
+
+    static let detailsHappy = "Удобства"
+    static let detailsTick = "Что включено"
+    static let detailsClose = "Что не включено"
+    static let detailsSubtitle = "Самое необходимое"
+    static let defaultTitleRoom = "room"
 }
 
 public enum Colors {
