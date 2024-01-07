@@ -33,6 +33,7 @@
 		2C9C96102B3888DF006F93E1 /* PriceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9C960F2B3888DF006F93E1 /* PriceView.swift */; };
 		2C9C96172B38A3AB006F93E1 /* PaymentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9C96162B38A3AB006F93E1 /* PaymentView.swift */; };
 		2CD50CCB2B380DF5004DF59F /* TouristView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD50CCA2B380DF5004DF59F /* TouristView.swift */; };
+		2CF6F3732B4AFCDC00482DF3 /* NavigationController + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF6F3722B4AFCDC00482DF3 /* NavigationController + Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,6 +64,7 @@
 		2C9C960F2B3888DF006F93E1 /* PriceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceView.swift; sourceTree = "<group>"; };
 		2C9C96162B38A3AB006F93E1 /* PaymentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentView.swift; sourceTree = "<group>"; };
 		2CD50CCA2B380DF5004DF59F /* TouristView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouristView.swift; sourceTree = "<group>"; };
+		2CF6F3722B4AFCDC00482DF3 /* NavigationController + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationController + Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -301,6 +303,7 @@
 			children = (
 				2C96346E2B2CD59D0054A216 /* Color+Extension.swift */,
 				2C94F9112B2DF57C006C43CF /* View+Extension.swift */,
+				2CF6F3722B4AFCDC00482DF3 /* NavigationController + Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -417,6 +420,7 @@
 				2C94F9412B36BF79006C43CF /* BookingViewModel.swift in Sources */,
 				2C96346F2B2CD59D0054A216 /* Color+Extension.swift in Sources */,
 				2C06ED712B2CC1D500C44223 /* HotelAppApp.swift in Sources */,
+				2CF6F3732B4AFCDC00482DF3 /* NavigationController + Extension.swift in Sources */,
 				2C9634672B2CCC350054A216 /* ImageSliderView.swift in Sources */,
 				2C96346B2B2CD4FF0054A216 /* Constants.swift in Sources */,
 				2C94F9122B2DF57C006C43CF /* View+Extension.swift in Sources */,

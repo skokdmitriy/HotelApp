@@ -13,36 +13,43 @@ struct RoomsView: View {
     @State var title: String
 
     var body: some View {
-            ScrollView {
-                ForEach(viewModel.rooms, id: \.self) { room in
+        ScrollView(showsIndicators: false) {
+            ForEach(viewModel.rooms, id: \.self) { room in
+                VStack(spacing: .zero) {
                     RoomView(room: room)
+
                     NavigationLink {
                         BookingView(isActivateRootLink: $isActivateRootLink)
-                        .environmentObject(BookingViewModel())
+                            .environmentObject(BookingViewModel())
                     } label: {
                         Text(Title.buttonRoom)
                             .frame(maxWidth: .infinity)
                     }
                     .buttonStyle(.borderedProminent)
-
-
-
-//                    Button {
-//
-//                    } label: {
-//                        Text(Title.buttonRoom)
-//                            .frame(maxWidth: .infinity)
-//                    }
-//                    .buttonStyle(.borderedProminent)
-                        .padding(.vertical)
+                    .padding()
                 }
-                .padding(.horizontal)
+                .background(Color.white)
+                .cornerRadius(Constants.cornerRadius)
+                .offset(y: Constants.offset)
             }
-
-            .navigationBarTitle(title, displayMode: .inline)
+            .background(Color(hex: Colors.backgroundScreen))
         }
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .principal) {
+                Text (title)
+                    .bold ()
+                    .multilineTextAlignment(.center)
+                    .lineLimit (Constants.titleTextLineLimit)
+                    .fixedSize (horizontal: false, vertical: true)
+            }
+        }
+        .padding(.vertical)
     }
+}
 
-    //#Preview {
-    //    RoomView()
-    //}
+private enum Constants {
+    static let cornerRadius: CGFloat = 12
+    static let offset: CGFloat = 8
+    static let titleTextLineLimit: Int = 2
+}

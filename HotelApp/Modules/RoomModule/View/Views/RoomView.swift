@@ -12,10 +12,26 @@ struct RoomView: View {
 
     var body: some View {
         VStack(alignment: .leading) {
-            makeImageSliderSection()
+            ImageSlider(imageUrls: room.imageUrls)
+                .frame(height: UIScreen.main.bounds.height / Constants.imageSliderHeight)
+                .padding(.top, Constants.imageSliderPaddingTop)
+
             Text(room.name)
-                .font(.system(size: 22))
-            makeTagsView()
+                .font(.system(size: Constants.nameFontSize, weight: .medium))
+
+            TagsView(availableWidth: UIScreen.main.bounds.width,
+                     data: room.peculiarities,
+                     spacing: Constants.tagsViewSpacing,
+                     alignment: .leading
+            ) { item in
+                Text(verbatim: item)
+                    .font(.system(size: Constants.tagsSize, weight: .medium))
+                    .foregroundColor(Color(hex: Colors.gray))
+                    .padding(.vertical, Constants.tagsPaddingVertical)
+                    .padding(.horizontal, Constants.tagsPaddingHorizontal)
+                    .background(Color(hex: Colors.backgroundTag))
+                    .cornerRadius(Constants.tagsCornerRadius)
+            }
 
             Button {
             } label: {
@@ -23,48 +39,44 @@ struct RoomView: View {
                     Text(Title.buttonAboutRoom)
                     Text(Image(systemName: Icons.chevronRight))
                 }
-                .font(.system(size: 16, weight: .medium))
+                .frame(minWidth: Constants.buttonAboutRoomMinWidth)
+                .frame(height: Constants.buttonAboutRoomHeight)
+                .font(.system(size: Constants.buttonAboutRoomFontSize, weight: .medium))
             }
-            .padding(5)
+
             .buttonStyle(.borderless)
-            .background(Color(hex: Colors.blue).opacity(0.1))
-            .cornerRadius(5)
+            .background(Color(hex: Colors.blue).opacity(Constants.buttonColorOpacity))
+            .cornerRadius(Constants.buttonCornerRadius)
 
-            makePriceSection()
+            HStack(alignment: .bottom) {
+                Text("\(room.price.formatted()) \(Title.rub)")
+                    .font(.system(size: Constants.priceFontSize, weight: .semibold))
+
+                Text(room.pricePer)
+                    .font(.system(size: Constants.pricePerFontSize, weight: .regular))
+                    .foregroundColor(Color(hex: Colors.gray))
+            }
+            .padding(.top, Constants.pricePaddingTop)
         }
-    }
-
-
-    private func makeImageSliderSection() -> some View {
-        ImageSlider(imageUrls: room.imageUrls)
-            .frame(height: 257)
-    }
-
-    private func makeTagsView() -> some View {
-        TagsView(availableWidth: UIScreen.main.bounds.width,
-                 data: room.peculiarities, spacing: 5,
-                 alignment: .leading
-        ) { item in
-            Text(verbatim: item)
-                .frame(height: 29)
-                .font(.system(size: 16))
-                .foregroundColor(Color(hex: Colors.gray))
-                .background(Color(hex: Colors.backgroundTag))
-                .cornerRadius(5)
-        }
-    }
-
-    private func makePriceSection() -> some View {
-        HStack(alignment: .bottom) {
-            Text("\(room.price.formatted(.number.locale(.init(identifier: "fr_FR")))) ₽")
-                .font(.system(size: 30, weight: .semibold))
-            Text(room.pricePer)
-                .font(.system(size: 16))
-                .foregroundColor(Color(hex: Colors.gray))
-        }
+        .padding(.horizontal)
     }
 }
 
-//#Preview {
-//    RoomView()
-//}
+private enum Constants {
+    static let imageSliderHeight: CGFloat = 3
+    static let imageSliderPaddingTop: CGFloat = 16
+    static let nameFontSize: CGFloat = 22
+    static let tagsViewSpacing: CGFloat = 8
+    static let tagsSize: CGFloat = 16
+    static let tagsPaddingVertical: CGFloat = 5
+    static let tagsPaddingHorizontal: CGFloat = 10
+    static let tagsCornerRadius: CGFloat = 5
+    static let buttonAboutRoomFontSize: CGFloat = 16
+    static let buttonAboutRoomMinWidth: CGFloat = 192
+    static let buttonAboutRoomHeight: CGFloat = 29
+    static let buttonCornerRadius: CGFloat = 5
+    static let buttonColorOpacity: CGFloat = 0.1
+    static let priceFontSize: CGFloat = 30
+    static let pricePerFontSize: CGFloat = 16
+    static let pricePaddingTop: CGFloat = 8
+}
