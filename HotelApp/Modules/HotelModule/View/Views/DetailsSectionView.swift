@@ -7,14 +7,6 @@
 
 import SwiftUI
 
-private enum Constants {
-    static let titleFountSize: CGFloat = 16
-    static let subTitleFontSize: CGFloat = 14
-    static let imageChevronOffset: CGFloat = -25
-    static let cornerRadius: CGFloat = 15
-    static let paddingLeading: CGFloat = 15
-}
-
 struct DetailsSectionView: View {
     let icon: String
     let title: String
@@ -47,4 +39,12 @@ struct DetailsSectionView: View {
         .cornerRadius(Constants.cornerRadius)
         .padding(.leading, Constants.paddingLeading)
     }
+}
+
+private enum Constants {
+    static let titleFountSize: CGFloat = 16
+    static let subTitleFontSize: CGFloat = 14
+    static let imageChevronOffset: CGFloat = -25
+    static let cornerRadius: CGFloat = 15
+    static let paddingLeading: CGFloat = 15
 }

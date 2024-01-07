@@ -7,29 +7,6 @@
 
 import SwiftUI
 
-private enum Constants {
-    static let generalSpacing: CGFloat = 12
-    static let buttonPaddingTop: CGFloat = 12
-    static let imageSliderHeight: CGFloat = 3
-    static let nameSize: CGFloat = 22
-    static let namePadding: CGFloat = 8
-    static let adressSize: CGFloat = 14
-    static let priceSpacing: CGFloat = 8
-    static let minimalPriceSize: CGFloat = 30
-    static let priceForItSize: CGFloat = 16
-    static let cornerRadius: CGFloat = 12
-    static let aboutHotelSize: CGFloat = 22
-    static let tagsViewSpacing: CGFloat = 8
-    static let tagsSize: CGFloat = 16
-    static let tagsPaddingVertical: CGFloat = 5
-    static let tagsPaddingHorizontal: CGFloat = 10
-    static let tagsCornerRadius: CGFloat = 5
-    static let aboutTheHotelSize: CGFloat = 16
-    static let aboutTheHotelPaddingTop: CGFloat = 12
-    static let detailsSectionPadding: CGFloat = 15
-    static let detailsSectionCornerRadius: CGFloat = 15
-}
-
 struct HotelView: View {
     @EnvironmentObject private var viewModel: HotelViewModel
     @State private var isActivateRootLink = false
@@ -164,4 +141,27 @@ struct HotelView: View {
         )
         .environmentObject(RoomsViewModel())
     }
+}
+
+private enum Constants {
+    static let generalSpacing: CGFloat = 12
+    static let buttonPaddingTop: CGFloat = 12
+    static let imageSliderHeight: CGFloat = 3
+    static let nameSize: CGFloat = 22
+    static let namePadding: CGFloat = 8
+    static let adressSize: CGFloat = 14
+    static let priceSpacing: CGFloat = 8
+    static let minimalPriceSize: CGFloat = 30
+    static let priceForItSize: CGFloat = 16
+    static let cornerRadius: CGFloat = 12
+    static let aboutHotelSize: CGFloat = 22
+    static let tagsViewSpacing: CGFloat = 8
+    static let tagsSize: CGFloat = 16
+    static let tagsPaddingVertical: CGFloat = 5
+    static let tagsPaddingHorizontal: CGFloat = 10
+    static let tagsCornerRadius: CGFloat = 5
+    static let aboutTheHotelSize: CGFloat = 16
+    static let aboutTheHotelPaddingTop: CGFloat = 12
+    static let detailsSectionPadding: CGFloat = 15
+    static let detailsSectionCornerRadius: CGFloat = 15
 }
