@@ -14,17 +14,13 @@ struct DetailsView: View {
     var body: some View {
             HStack(alignment: .top){
                 Text(firstText)
-                    .frame(width: UIScreen.main.bounds.width / 3,alignment: .leading)
-                    .font(.system(size: 16))
+                    .frame(width: UIScreen.main.bounds.width / 3, alignment: .leading)
+                    .font(.system(size: 16, weight: .regular))
                     .foregroundColor(Color(hex: Colors.gray))
 
                 Text(secondText)
-                    .font(.system(size: 16))
+                    .font(.system(size: 16, weight: .regular))
                 Spacer()
             }
     }
-}
-
-#Preview {
-    DetailsView(firstText: "Вылет", secondText: "Египет, Хургада")
 }
