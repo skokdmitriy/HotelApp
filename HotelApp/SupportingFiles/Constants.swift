@@ -60,6 +60,7 @@ public enum Title {
     static let detailsClose = "Что не включено"
     static let detailsSubtitle = "Самое необходимое"
     static let defaultTitleRoom = "room"
+    static let maskPhoneNumber = "+ 7 ( *** ) *** - ** - **"
 }
 
 public enum Colors {

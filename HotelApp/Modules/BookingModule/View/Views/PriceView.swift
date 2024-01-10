@@ -19,12 +19,8 @@ struct PriceView: View {
 
             Spacer()
 
-            Text("\(secondText.formatted(.number.locale(.init(identifier: "fr_FR")))) ₽")
+            Text("\(secondText.formatted()) \(Title.rub)")
                 .font(.system(size: 16, weight: .regular))
         }
     }
 }
-
-//#Preview {
-//    PriceView()
-//}

@@ -12,14 +12,14 @@ struct BookingView: View {
     @Binding var isActivateRootLink: Bool
     @State var phoneNumber = ""
     @State var emailText = ""
-    @State private var rotationAngle: Double = 0
+    @State private var rotationAngle: Double = Constants.General.rotationAngle
     @State private var isAnimationButton = false
     @State private var views: [AnyView] = []
 
     var body: some View {
         ScrollView(showsIndicators: false) {
-            if let booking = viewModel.booking {
-                VStack(spacing: 8) {
+            VStack {
+                if let booking = viewModel.booking {
                     makeNameHotelSection(booking)
                     makeDetailsSection(booking)
                     makeInfoSection()
@@ -27,50 +27,46 @@ struct BookingView: View {
                     makeAddTouristSection()
                     makeFinalPriceSection(booking)
                 }
-            }
+                VStack(spacing: .zero) {
+                    Divider()
 
-            NavigationLink {
-                PaymentView(isActivateRootLink: $isActivateRootLink)
-            } label: {
-                Text("\(Title.pay) \(viewModel.getFinalPrice())")
-                    .frame(maxWidth: .infinity)
+                    NavigationLink {
+                        PaymentView(isActivateRootLink: $isActivateRootLink)
+                    } label: {
+                        Text("\(Title.pay) \(viewModel.getFinalPrice()) \(Title.rub)")
+                            .frame(maxWidth: .infinity)
+                    }
+                    .buttonStyle(.borderedProminent)
+                    .padding(.top, Constants.General.paddingTopButton)
+                    .padding(.horizontal)
+                }
+                .background(Color.white)
             }
-            .buttonStyle(.borderedProminent)
+            .offset(y: Constants.General.offset)
+            .background(Color(hex: Colors.backgroundScreen))
+            .navigationTitle(Title.booking)
         }
-        .navigationTitle(Title.booking)
-        .padding(.horizontal)
     }
 
     private func makeNameHotelSection(_ booking: BookingModel) -> some View {
-        VStack(alignment: .leading, spacing: 8) {
-            HStack {
-                ZStack {
-                    Color(hex: Colors.backgroundRating)
-                        .frame(width: 149, height: 29, alignment: .center)
-                        .opacity(0.2)
-                    HStack(alignment: .center, spacing: 5) {
-                        Image(systemName: Icons.star)
-                            .frame(width: 15, height: 15)
-                        Text(String(booking.horating))
-                        Text(booking.ratingName)
-                    }
-                    .font(.system(size: 16))
-                    .foregroundColor(Color(hex: Colors.textColorRating))
-                }
-                .cornerRadius(5)
-                Spacer()
-            }
+        HStack {
+            VStack(alignment: .leading) {
+                RatingView(ratingCount: booking.horating, ratingName: booking.ratingName)
 
-            Text(booking.hotelName)
-                .font(.system(size: 22))
-            Text(booking.hotelAdress)
-                .font(.system(size: 14))
-                .foregroundColor(Color(hex: Colors.blue))
+                Text(booking.hotelName)
+                    .font(.system(size: Constants.HotelSection.nameSize, weight: .medium))
+
+                Text(booking.hotelAdress)
+                    .font(.system(size: Constants.HotelSection.adressSize, weight: .medium))
+                    .foregroundColor(Color(hex: Colors.blue))
+            }
+            Spacer()
         }
+        .modifier(ConfigView())
     }
 
     private func makeDetailsSection(_ booking: BookingModel) -> some View {
-        VStack(spacing: 6){
+        VStack(spacing: Constants.DetailSection.stackSpacing) {
             DetailsView(firstText: Title.departure,
                         secondText: booking.departure
             )
@@ -93,71 +89,71 @@ struct BookingView: View {
                         secondText: booking.nutrition
             )
         }
+        .modifier(ConfigView())
     }
 
     private func makeInfoSection() -> some View {
         VStack(alignment: .leading) {
             Text(Title.buyerInfo)
-                .font(.system(size: 22, weight: .medium))
+                .font(.system(size: Constants.InfoSection.buyerInfoSize, weight: .medium))
+                .padding(.bottom)
 
             VStack(alignment: .leading) {
                 Text(Title.numberPhone)
-                    .font(.system(size: 12))
-                    .foregroundColor(Color(hex: Colors.textFieldPlaceholder))
-                    .padding(.top, 10)
-                    .padding(.leading)
+                    .modifier(TitleTextFieldModifier())
 
-                TextField("+7 (***) ***-**-**", text: $phoneNumber)
-                    .padding(.leading, 16)
-                    .padding(.bottom, 10)
+                TextField(Title.maskPhoneNumber, text: $phoneNumber)
                     .keyboardType(.numberPad)
                     .textContentType(.telephoneNumber)
+                    .modifier(TextFieldModifier())
             }
-            .background(Color(hex: Colors.background).cornerRadius(10))
+            .cornerRadius(Constants.InfoSection.cornerRadius)
+            .background(Color(hex: Colors.background))
 
             VStack(alignment: .leading) {
                 Text(Title.mail)
-                    .font(.system(size: 12))
-                    .foregroundColor(Color(hex: Colors.textFieldPlaceholder))
-                    .padding(.top, 10)
-                    .padding(.leading, 16)
+                    .modifier(TitleTextFieldModifier())
 
                 TextField(Title.mailPlaceholder, text: $emailText)
                     .autocapitalization(.none)
                     .keyboardType(.emailAddress)
                     .textContentType(.emailAddress)
-                    .padding(.leading, 16)
-                    .padding(.bottom, 10)
+                    .modifier(TextFieldModifier())
+
             }
-            .background(Color(hex: Colors.background).cornerRadius(10))
+            .cornerRadius(Constants.InfoSection.cornerRadius)
+            .background(Color(hex: Colors.background))
 
             Text(Title.privateText)
-                .font(.system(size: 14, weight: .light))
+                .font(.system(size: Constants.InfoSection.privateTextSize, weight: .regular))
                 .foregroundColor(Color(hex: Colors.gray))
         }
+        .modifier(ConfigView())
     }
 
     private func makeTouristSection() -> some View {
         VStack {
             HStack {
                 Text(Title.firstTourist)
-                    .font(.system(size: 22, weight: .medium))
+                    .font(.system(size: Constants.TouristSection.firstTouristSize, weight: .medium))
 
                 Spacer()
 
                 Button {
-                    withAnimation(.easeInOut(duration: 0.5)) {
-                        rotationAngle -= 180
+                    withAnimation(
+                        .easeInOut(duration: Constants.TouristSection.animationDuration)) {
+                            rotationAngle -= Constants.TouristSection.rotationAngle
                         isAnimationButton.toggle()
                     }
                 } label: {
                     Image(systemName: Icons.chevronUp)
                         .rotationEffect((Angle(degrees: rotationAngle)))
                 }
-                .frame(width: 32, height: 32, alignment: .center)
-                .buttonStyle(.borderless)
-                .background(Color(hex: Colors.blue).opacity(0.1))
-                .cornerRadius(6)
+                .frame(width: Constants.TouristSection.ButtonFrameWidth,
+                       height: Constants.TouristSection.ButtonFrameHeight,
+                       alignment: .center)
+                .background(Color(hex: Colors.blue).opacity(Constants.TouristSection.opacity))
+                .cornerRadius(Constants.TouristSection.cornerRadiusButton)
             }
 
             if isAnimationButton == false {
@@ -165,17 +161,21 @@ struct BookingView: View {
                     .transition(.opacity)
             }
         }
+        .modifier(ConfigView())
     }
 
     private func makeAddTouristSection() -> some View {
         VStack {
-            ForEach(0..<views.count, id: \.self) { numberTourist in
+            ForEach(.zero..<views.count, id: \.self) { numberTourist in
                 NextTouristView(tittleTourist: viewModel.getNumberTourist(numberTourist))
+                    .modifier(ConfigView())
             }
 
             HStack {
                 Text(Title.addTourist)
-                    .font(.system(size: 22, weight: .medium))
+                    .font(.system(size: Constants.AddTouristSection.touristTitleSize,
+                                  weight: .medium))
+
                 Spacer()
 
                 Button {
@@ -185,34 +185,116 @@ struct BookingView: View {
                 } label: {
                     Image(systemName: Icons.plus)
                 }
-                .frame(width: 32, height: 32, alignment: .center)
+                .frame(width: Constants.AddTouristSection.ButtonFrameWidth,
+                       height: Constants.AddTouristSection.ButtonFrameHeight,
+                       alignment: .center)
                 .buttonStyle(.borderedProminent)
-                .cornerRadius(6)
-                .disabled(views.count == 2)
+                .cornerRadius(Constants.AddTouristSection.cornerRadiusButton)
+                .disabled(views.count == Constants.AddTouristSection.maxTouristCount)
             }
+            .modifier(ConfigView())
         }
     }
 
     private func makeFinalPriceSection(_ booking: BookingModel) -> some View {
-        VStack(spacing: 8) {
+        VStack(spacing: Constants.PriceSection.stackSpacing) {
             PriceView(firstText: Title.tour, secondText: booking.tourPrice)
             PriceView(firstText: Title.fuelCharge, secondText: booking.fuelCharge)
             PriceView(firstText: Title.serviceCharge, secondText: booking.serviceCharge)
 
             HStack(alignment: .top) {
                 Text(Title.finalPrice)
-                    .font(.system(size: 16))
                     .foregroundColor(Color(hex: Colors.gray))
+                    .font(.system(size: Constants.PriceSection.finalPriceTitleSize,
+                                  weight: .regular))
 
                 Spacer()
 
-                Text("\(viewModel.getFinalPrice().formatted(.number.locale(.init(identifier: "fr_FR")))) ₽")
-                    .font(.system(size: 16, weight: .regular))
+                Text("\(viewModel.getFinalPrice().formatted()) \(Title.rub)")
                     .foregroundColor(Color(hex: Colors.blue))
+                    .font(.system(size: Constants.PriceSection.finalPriceTitleSize,
+                                  weight: .semibold))
             }
+        }
+        .modifier(ConfigView())
+    }
+
+    private struct ConfigView: ViewModifier {
+        func body(content: Content) -> some View {
+            content
+                .padding()
+                .background(Color.white)
+                .cornerRadius(Constants.General.cornerRadius)
+        }
+    }
+
+    private struct TitleTextFieldModifier: ViewModifier {
+        func body(content: Content) -> some View {
+            content
+                .font(.system(size: Constants.General.titleTextFieldSize, weight: .regular))
+                .foregroundColor(Color(hex: Colors.textFieldPlaceholder))
+                .padding(.top, Constants.General.titleTextFieldPadding)
+                .padding(.leading)
+        }
+    }
+
+    private struct TextFieldModifier: ViewModifier {
+        func body(content: Content) -> some View {
+            content
+                .font(.system(size: Constants.General.textFieldSize, weight: .regular))
+                .padding(.leading)
+                .padding(.bottom, Constants.General.titleTextFieldPadding)
         }
     }
 }
-//#Preview {
-//    BookingView()
-//}
+
+private enum Constants {
+    enum General {
+        static let rotationAngle: Double = 0
+        static let paddingTopButton: CGFloat = 12
+        static let offset: CGFloat = 8
+        static let cornerRadius: CGFloat = 12
+        static let titleTextFieldSize: CGFloat = 12
+        static let titleTextFieldPadding: CGFloat = 10
+        static let textFieldSize: CGFloat = 16
+    }
+
+    enum HotelSection {
+        static let nameSize: CGFloat = 22
+        static let adressSize: CGFloat = 14
+    }
+
+    enum DetailSection {
+        static let stackSpacing: CGFloat = 16
+    }
+
+    enum InfoSection {
+        static let buyerInfoSize: CGFloat = 22
+        static let numberPhoneSize: CGFloat = 12
+        static let cornerRadius: CGFloat = 10
+        static let privateTextSize: CGFloat = 14
+    }
+
+    enum TouristSection {
+        static let firstTouristSize: CGFloat = 22
+        static let animationDuration: CGFloat = 0.5
+        static let rotationAngle: CGFloat = 180
+        static let ButtonFrameWidth: CGFloat = 32
+        static let ButtonFrameHeight: CGFloat = 32
+        static let cornerRadiusButton: CGFloat = 6
+        static let opacity: CGFloat = 0.1
+    }
+
+    enum AddTouristSection {
+        static let touristTitleSize: CGFloat = 22
+        static let ButtonFrameWidth: CGFloat = 32
+        static let ButtonFrameHeight: CGFloat = 32
+        static let cornerRadiusButton: CGFloat = 6
+        static let maxTouristCount: Int = 2
+    }
+
+    enum PriceSection {
+        static let stackSpacing: CGFloat = 16
+        static let finalPriceTitleSize: CGFloat = 16
+    }
+}

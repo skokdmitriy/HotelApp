@@ -18,28 +18,30 @@ struct TouristView: View {
     var body: some View {
         VStack(alignment: .leading) {
             Text(Title.name)
-                .font(.system(size: 12))
+                .font(.system(size: 12, weight: .regular))
                 .foregroundColor(Color(hex: Colors.textFieldPlaceholder))
                 .padding(.top, 10)
-                .padding(.leading, 16)
+                .padding(.leading)
 
             TextField("", text: $name)
+                .font(.system(size: 16, weight: .regular))
                 .textContentType(.name)
-                .padding(.leading, 16)
+                .padding(.leading)
                 .padding(.bottom, 10)
         }
         .background(Color(hex: Colors.background).cornerRadius(10))
 
         VStack(alignment: .leading) {
             Text(Title.familyName)
-                .font(.system(size: 12))
+                .font(.system(size: 12, weight: .regular))
                 .foregroundColor(Color(hex: Colors.textFieldPlaceholder))
                 .padding(.top, 10)
-                .padding(.leading, 16)
+                .padding(.leading)
 
             TextField("", text: $familyName)
+                .font(.system(size: 16, weight: .regular))
                 .textContentType(.familyName)
-                .padding(.leading, 16)
+                .padding(.leading)
                 .padding(.bottom, 10)
         }
         .background(Color(hex: Colors.background).cornerRadius(10))
@@ -60,15 +62,12 @@ struct TouristView: View {
             .modifier(ConfigTextField())
     }
 
-    struct ConfigTextField: ViewModifier {
+    private struct ConfigTextField: ViewModifier {
         func body(content: Content) -> some View {
             content
+                .font(.system(size: 16, weight: .regular))
                 .padding()
                 .background(Color(hex: Colors.background).cornerRadius(10))
         }
     }
-}
-
-#Preview {
-    TouristView()
 }

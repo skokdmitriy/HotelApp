@@ -98,7 +98,3 @@ struct ConfigTextField: ViewModifier {
             .background(Color(hex: Colors.background).cornerRadius(10))
     }
 }
-
-//#Preview {
-//    NextTouristView()
-//}
