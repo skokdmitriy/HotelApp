@@ -25,6 +25,9 @@ xcuserdata/
 *.ipa
 *.dSYM.zip
 *.dSYM
+*.DS_Store
+*.Trashes
+*Thumbs.db
 ## Playgrounds
 timeline.xctimeline
 playground.xcworkspace
