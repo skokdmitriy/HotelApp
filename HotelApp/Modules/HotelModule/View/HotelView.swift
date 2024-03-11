@@ -27,9 +27,8 @@ struct HotelView: View {
                                        isActive: $isActivateRootLink,
                                        label: {
                             Text(Title.buttonHotel)
-                                .frame(maxWidth: .infinity)
+                                .modifier(PrimaryButtons())
                         })
-                        .buttonStyle(.borderedProminent)
                         .padding(.top, Constants.buttonPaddingTop)
                         .padding(.horizontal)
                     }
