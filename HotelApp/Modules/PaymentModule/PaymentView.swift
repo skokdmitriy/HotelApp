@@ -39,6 +39,3 @@ struct PaymentView: View {
             .navigationBarTitle(Title.payment, displayMode: .inline)
     }
 }
-//#Preview {
-//    PaymentView()
-//}
