@@ -31,10 +31,14 @@ struct PaymentView: View {
                     isActivateRootLink = false
                 } label: {
                     Text(Title.paymentButton)
-                        .modifier(PrimaryButtons())
+                        .frame(maxWidth: .infinity)
                 }
+                .buttonStyle(.borderedProminent)
             }
             .padding()
             .navigationBarTitle(Title.payment, displayMode: .inline)
     }
 }
+//#Preview {
+//    PaymentView()
+//}

@@ -27,8 +27,9 @@ struct HotelView: View {
                                        isActive: $isActivateRootLink,
                                        label: {
                             Text(Title.buttonHotel)
-                                .modifier(PrimaryButtons())
+                                .frame(maxWidth: .infinity)
                         })
+                        .buttonStyle(.borderedProminent)
                         .padding(.top, Constants.buttonPaddingTop)
                         .padding(.horizontal)
                     }
@@ -42,7 +43,7 @@ struct HotelView: View {
 
     private func makeDescriptionHotelSection(hotel: HotelModel) -> some View {
         VStack(alignment: .leading) {
-            CustomPageView(imageUrls: hotel.imageUrls)
+            ImageSlider(imageUrls: hotel.imageUrls)
                 .frame(height: UIScreen.main.bounds.height / Constants.imageSliderHeight)
                 .padding([.horizontal, .bottom])
 

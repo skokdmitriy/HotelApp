@@ -23,8 +23,9 @@ struct RoomsView: View {
                             .environmentObject(BookingViewModel())
                     } label: {
                         Text(Title.buttonRoom)
-                            .modifier(PrimaryButtons())
+                            .frame(maxWidth: .infinity)
                     }
+                    .buttonStyle(.borderedProminent)
                     .padding()
                 }
                 .background(Color.white)

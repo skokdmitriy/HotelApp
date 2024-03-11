@@ -29,6 +29,7 @@ struct RatingView: View {
                 .opacity(0.2)
                 .cornerRadius(5)
         )
+
     }
 
     struct ConfigText: ViewModifier {
