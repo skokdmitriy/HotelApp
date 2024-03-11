@@ -31,9 +31,8 @@ struct PaymentView: View {
                     isActivateRootLink = false
                 } label: {
                     Text(Title.paymentButton)
-                        .frame(maxWidth: .infinity)
+                        .modifier(PrimaryButtons())
                 }
-                .buttonStyle(.borderedProminent)
             }
             .padding()
             .navigationBarTitle(Title.payment, displayMode: .inline)
