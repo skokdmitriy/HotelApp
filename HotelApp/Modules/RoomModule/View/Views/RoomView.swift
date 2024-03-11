@@ -12,7 +12,7 @@ struct RoomView: View {
 
     var body: some View {
         VStack(alignment: .leading) {
-            ImageSlider(imageUrls: room.imageUrls)
+            CustomPageView(imageUrls: room.imageUrls)
                 .frame(height: UIScreen.main.bounds.height / Constants.imageSliderHeight)
                 .padding(.top, Constants.imageSliderPaddingTop)
 
