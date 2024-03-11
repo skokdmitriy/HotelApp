@@ -43,7 +43,7 @@ struct HotelView: View {
 
     private func makeDescriptionHotelSection(hotel: HotelModel) -> some View {
         VStack(alignment: .leading) {
-            ImageSlider(imageUrls: hotel.imageUrls)
+            CustomPageView(imageUrls: hotel.imageUrls)
                 .frame(height: UIScreen.main.bounds.height / Constants.imageSliderHeight)
                 .padding([.horizontal, .bottom])
 
