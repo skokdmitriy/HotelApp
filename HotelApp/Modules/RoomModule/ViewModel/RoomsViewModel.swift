@@ -13,18 +13,14 @@ final class RoomsViewModel: ObservableObject {
     @Published var rooms: [RoomModel] = []
     @Published var imagesRoom: [UIImage] = []
     @State private var cancellables = Set<AnyCancellable>()
-
-    init() {
-        loadRooms()
-    }
     
-    private func loadRooms() {
+    func loadRooms() {
         networkService.fetchRooms()
             .subscribe(on: DispatchQueue.main)
             .sink { completion in
                 switch completion {
                 case .finished:
-                    print("Request finished")
+                    print("Request finished loadRooms")
                 case .failure(let error):
                     print("Request failed: \(error)")
                 }

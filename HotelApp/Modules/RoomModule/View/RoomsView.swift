@@ -44,6 +44,9 @@ struct RoomsView: View {
             }
         }
         .padding(.vertical)
+        .onAppear {
+            viewModel.loadRooms()
+        }
     }
 }
 

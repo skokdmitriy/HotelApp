@@ -38,6 +38,9 @@ struct HotelView: View {
                 .background(Color(hex: Colors.backgroundScreen))
             }
         }
+        .onAppear {
+            viewModel.loadHotel()
+        }
     }
 
     private func makeDescriptionHotelSection(hotel: HotelModel) -> some View {

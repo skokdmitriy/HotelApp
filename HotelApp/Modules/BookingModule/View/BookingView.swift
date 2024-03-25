@@ -45,6 +45,9 @@ struct BookingView: View {
             .background(Color(hex: Colors.backgroundScreen))
             .navigationTitle(Title.booking)
         }
+        .onAppear{
+            viewModel.loadBooking()
+        }
     }
 
     private func makeNameHotelSection(_ booking: BookingModel) -> some View {
