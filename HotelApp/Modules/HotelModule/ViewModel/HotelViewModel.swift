@@ -9,22 +9,22 @@ import SwiftUI
 import Combine
 
 final class HotelViewModel: ObservableObject {
-
+    
     private let networkService = NetworkService()
     @Published var hotel: HotelModel?
     @State private var cancellables = Set<AnyCancellable>()
-
-    init() {
-        loadHotel()
-    }
-
-    private func loadHotel() {
+    
+    //    init() {
+    //        loadHotel()
+    //    }
+    
+    func loadHotel() {
         networkService.fetchHotel()
             .subscribe(on: DispatchQueue.main)
             .sink { completion in
                 switch completion {
                 case .finished:
-                    print("Request finished")
+                    print("Request finished loadHotel")
                 case .failure(let error):
                     print("Request failed: \(error)")
                 }

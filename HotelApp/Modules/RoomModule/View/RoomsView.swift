@@ -23,9 +23,8 @@ struct RoomsView: View {
                             .environmentObject(BookingViewModel())
                     } label: {
                         Text(Title.buttonRoom)
-                            .frame(maxWidth: .infinity)
+                            .modifier(PrimaryButtons())
                     }
-                    .buttonStyle(.borderedProminent)
                     .padding()
                 }
                 .background(Color.white)
@@ -45,6 +44,9 @@ struct RoomsView: View {
             }
         }
         .padding(.vertical)
+        .onAppear {
+            viewModel.loadRooms()
+        }
     }
 }
 

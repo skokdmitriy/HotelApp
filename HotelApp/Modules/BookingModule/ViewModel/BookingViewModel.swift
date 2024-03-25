@@ -13,17 +13,13 @@ final class BookingViewModel: ObservableObject  {
     @Published var booking: BookingModel?
     @State private var cancellables = Set<AnyCancellable>()
 
-    init() {
-        loadBooking()
-    }
-
-    private func loadBooking() {
+    func loadBooking() {
         networkService.fetchBooking()
             .subscribe(on: DispatchQueue.main)
             .sink { completion in
                 switch completion {
                 case .finished:
-                    print("Request finished")
+                    print("Request finished loadBooking")
                 case .failure(let error):
                     print("Request failed: \(error)")
                 }

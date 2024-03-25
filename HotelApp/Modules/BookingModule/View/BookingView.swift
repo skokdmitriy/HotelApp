@@ -34,9 +34,8 @@ struct BookingView: View {
                         PaymentView(isActivateRootLink: $isActivateRootLink)
                     } label: {
                         Text("\(Title.pay) \(viewModel.getFinalPrice()) \(Title.rub)")
-                            .frame(maxWidth: .infinity)
+                            .modifier(PrimaryButtons())
                     }
-                    .buttonStyle(.borderedProminent)
                     .padding(.top, Constants.General.paddingTopButton)
                     .padding(.horizontal)
                 }
@@ -45,6 +44,9 @@ struct BookingView: View {
             .offset(y: Constants.General.offset)
             .background(Color(hex: Colors.backgroundScreen))
             .navigationTitle(Title.booking)
+        }
+        .onAppear{
+            viewModel.loadBooking()
         }
     }
 
