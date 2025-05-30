@@ -11,7 +11,10 @@ import SwiftUI
 struct HotelAppApp: App {
     var body: some Scene {
         WindowGroup {
-            HotelView().environmentObject(HotelViewModel())
+			BookingView()
+
+//			HotelView().environmentObject(HotelViewModel())
+
         }
     }
 }

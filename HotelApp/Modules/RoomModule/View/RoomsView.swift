@@ -19,8 +19,8 @@ struct RoomsView: View {
                     RoomView(room: room)
 
                     NavigationLink {
-                        BookingView(isActivateRootLink: $isActivateRootLink)
-                            .environmentObject(BookingViewModel())
+//                        BookingView(isActivateRootLink: $isActivateRootLink)
+//                            .environmentObject(BookingViewModel())
                     } label: {
                         Text(Title.buttonRoom)
                             .modifier(PrimaryButtons())

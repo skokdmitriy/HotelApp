@@ -9,7 +9,7 @@ import SwiftUI
 
 struct BookingView: View {
     @EnvironmentObject private var viewModel: BookingViewModel
-    @Binding var isActivateRootLink: Bool
+//    @Binding var isActivateRootLink: Bool
     @State var phoneNumber = ""
     @State var emailText = ""
     @State private var rotationAngle: Double = Constants.General.rotationAngle
@@ -254,7 +254,7 @@ private enum Constants {
     enum General {
         static let rotationAngle: Double = 0
         static let paddingTopButton: CGFloat = 12
-        static let offset: CGFloat = 8
+		static let offset: CGFloat = 8
         static let cornerRadius: CGFloat = 12
         static let titleTextFieldSize: CGFloat = 12
         static let titleTextFieldPadding: CGFloat = 10
@@ -300,3 +300,4 @@ private enum Constants {
         static let finalPriceTitleSize: CGFloat = 16
     }
 }
+
